@@ -1,0 +1,72 @@
+body {
+    background-color: var(--off-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.plate {
+    width: 300px;
+    height: 300px;
+    background-color: var(--light-beige);
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.ingredient {
+    position: absolute;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.ingredient:hover {
+    transform: translateY(-10px);
+}
+
+.ingredient-1 {
+    width: 50px;
+    height: 50px;
+    background-color: var(--light-green);
+    top: 20%;
+    left: 30%;
+}
+
+.ingredient-2 {
+    width: 60px;
+    height: 60px;
+    background-color: var(--olive-green);
+    top: 50%;
+    left: 20%;
+}
+
+.ingredient-3 {
+    width: 40px;
+    height: 40px;
+    background-color: var(--pale-yellow);
+    top: 30%;
+    left: 60%;
+}
+
+.ingredient-4 {
+    width: 55px;
+    height: 55px;
+    background-color: var(--soft-gray);
+    top: 70%;
+    left: 40%;
+}
+
+.ingredient-5 {
+    width: 45px;
+    height: 45px;
+    background-color: var(--tomato-red);
+    top: 10%;
+    left: 80%;
+}
+
+.ingredient:hover {
+    background-color: var(--light-green);
+}
