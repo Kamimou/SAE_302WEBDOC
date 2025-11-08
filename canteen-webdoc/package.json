@@ -1,0 +1,21 @@
+{
+  "name": "canteen-webdoc",
+  "version": "1.0.0",
+  "description": "A web project themed around canteens, featuring an interactive plate of ingredients.",
+  "main": "src/scripts/main.js",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'Build process not defined yet.'"
+  },
+  "keywords": [
+    "canteen",
+    "ingredients",
+    "interactive",
+    "webdoc"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
