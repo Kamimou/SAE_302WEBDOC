@@ -1,0 +1,163 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #eafbea, #ffffff);
+  color: #2e2e2e;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Vidéo de fond --- */
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0,1;
+}
+
+/* --- Structure principale --- */
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 5%;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Partie gauche : assiette + ingrédients --- */
+.left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.plate-zone {
+  position: relative;
+  width: 580px; /* +10% */
+  height: 580px;
+}
+
+.plate {
+  width: 385px; /* +10% */
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* --- Ingrédients autour de l’assiette --- */
+.ingredient-item {
+  position: absolute;
+  text-align: center;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  animation: float 4s ease-in-out infinite;
+}
+
+.ingredient-item img {
+  width: 120px; /* +10% */
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.ingredient-item a {
+  text-decoration: none; /* Supprime le soulignement bleu */
+  color: inherit; /* Garde la même couleur que le texte normal */
+}
+
+
+.ingredient-item p {
+  font-size: 1rem; /* Texte un peu plus grand */
+  font-weight: 600; /* Met en gras */
+  color: #2e2e2e;
+  margin-top: 0.4rem;
+}
+
+/* --- Position ajustée --- */
+.ingredient-item.top {
+  top: -18%;
+  left: 41%;
+  transform: translateX(-50%);
+}
+
+.ingredient-item.left-ing {
+  top: 50%;
+  left: -30%;
+  transform: translateY(-50%);
+}
+
+.ingredient-item.right-ing {
+  top: 50%;
+  right: -30%;
+  transform: translateY(-50%);
+}
+
+/* --- Animation commune à tous les ingrédients --- */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* --- Effets visuels --- */
+.ingredient-item:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+.ingredient-item:hover img {
+  box-shadow: 0 0 25px rgba(76, 175, 80, 0.6);
+}
+
+/* --- Partie droite : titre avec fond --- */
+.right {
+  flex: 1;
+  text-align: center;
+}
+
+.text-background {
+  display: inline-block;
+  padding: 1.8rem 3.6rem; /* +20% d’espace autour */
+  background-color: rgba(232, 245, 233, 0.9);
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+}
+
+.right h1 {
+  font-size: 3.36rem; /* +20% */
+  color: #2e7d32;
+  margin-bottom: 0.7rem;
+}
+
+.right h2 {
+  font-size: 1.56rem; /* +20% */
+  color: #4caf50;
+}
+/* --- Footer --- */
+footer {
+  background-color: #e8f5e9;
+  text-align: center;
+  padding: 1rem;
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
