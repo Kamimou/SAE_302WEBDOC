@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebDoc - Support de documentation</title>
+<meta name="description" content="Page WebDoc basique servant de support de documentation.">
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;line-height:1.6;margin:0;color:#1a1a1a;background:#ffffff}
+header{border-bottom:1px solid #e8e8e8;padding:24px}
+header h1{margin:0;font-size:28px}
+header p{margin:6px 0 0 0;color:#555}
+nav{background:#f7f7f7;border-right:1px solid #e8e8e8;padding:16px}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:0}
+main{padding:24px}
+footer{border-top:1px solid #e8e8e8;padding:16px;color:#666;font-size:14px}
+ul{padding-left:18px}
+a{color:#0b5fff;text-decoration:none}
+a:hover,a:focus{text-decoration:underline}
+code,kbd,pre{font-family:ui-monospace,SFMono-Regular,Consolas,Menlo,monospace;background:#f4f6f8;border:1px solid #e5e7eb;border-radius:4px}
+code{padding:2px 4px}
+pre{padding:12px;overflow:auto}
+.toc{position:sticky;top:0;max-height:100dvh;overflow:auto}
+@media (max-width: 900px){.layout{display:block}nav{border-right:none;border-bottom:1px solid #e8e8e8}}
+.assiette{display:block;max-width:280px;width:60%;height:auto;margin:16px auto;animation:assietteMotion 5s ease-in-out infinite,assietteShadow 5s ease-in-out infinite;transform-origin:50% 60%;filter:drop-shadow(0 10px 16px rgba(0,0,0,.16));transition:filter .3s ease;position:relative;z-index:1}
+.assiette:hover{animation-duration:3.2s,3.2s;filter:drop-shadow(0 16px 26px rgba(0,0,0,.22))}
+@keyframes assietteMotion{0%{transform:translateY(0) rotate(-2deg) scale(1)}20%{transform:translateY(-12px) rotate(2deg) scale(1.03)}50%{transform:translateY(0) rotate(0) scale(1)}80%{transform:translateY(10px) rotate(-1.5deg) scale(.995)}100%{transform:translateY(0) rotate(-2deg) scale(1)}}
+@keyframes assietteShadow{0%{filter:drop-shadow(0 10px 16px rgba(0,0,0,.16))}50%{filter:drop-shadow(0 18px 24px rgba(0,0,0,.2))}100%{filter:drop-shadow(0 10px 16px rgba(0,0,0,.16))}}
+@media (prefers-reduced-motion: reduce){.assiette{animation:none}}
+.assiette-wrap{position:relative;display:flex;flex-direction:column;align-items:center}
+.ingredient{position:absolute;display:inline-block;width:160px;height:160px;line-height:0;border-radius:50%;cursor:pointer;transform:translate(-50%,-50%) scale(1);animation:ingredientFloat 4.2s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.14));transition:transform .25s ease,filter .25s ease;z-index:2}
+.ingredient img{width:100%;height:100%;object-fit:contain;pointer-events:none}
+.ingredient:focus{outline:3px solid #0b5fff;outline-offset:4px}
+.ingredient:hover{transform:translate(-50%,-50%) scale(1.06);filter:drop-shadow(0 10px 16px rgba(0,0,0,.18))}
+.ingredient-oeufs{top:4%;left:50%}
+.ingredient-betterave{top:48%;left:32%}
+.ingredient-concombre{top:36%;left:68%}
+@keyframes ingredientFloat{0%{transform:translate(-50%,-50%) scale(1) rotate(-2deg)}50%{transform:translate(-50%,-60%) scale(1.05) rotate(2deg)}100%{transform:translate(-50%,-50%) scale(1) rotate(-2deg)}}
+@media (prefers-reduced-motion: reduce){.ingredient{animation:none}}
+</style>
+</head>
+<body>
+<header>
+<h1>WebDoc • Support de documentation</h1>
+<p>SAE 302 — Modèle de page simple pour présenter un projet ou un guide.</p>
+</header>
+<div class="layout">
+<nav aria-label="Table des matières">
+<div class="toc">
+<strong>Sommaire</strong>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#utilisation">Utilisation</a></li>
+<li><a href="#api">Référence API</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#ressources">Ressources</a></li>
+</ul>
+</div>
+</nav>
+<main>
+<section id="introduction">
+<h2>Introduction</h2>
+<p>Cette page sert de <em>starter</em> pour votre documentation Web. Remplacez les sections ci-dessous par le contenu de votre projet.</p>
+<p>Objectifs possibles :</p>
+<ul>
+<li>Présenter le contexte et les objectifs.</li>
+<li>Montrer une démo rapide.</li>
+<li>Lister les fonctionnalités principales.</li>
+</ul>
+<figure>
+<div class="assiette-wrap">
+<img src="plat.png" alt="Illustration d'un plat" class="assiette">
+<a href="#utilisation" class="ingredient ingredient-oeufs" aria-label="Oeufs">
+<img src="oeufs.png" alt="" aria-hidden="true">
+</a>
+<a href="#utilisation" class="ingredient ingredient-betterave" aria-label="Betterave">
+<img src="betterave.png" alt="" aria-hidden="true">
+</a>
+<a href="#utilisation" class="ingredient ingredient-concombre" aria-label="Concombre">
+<img src="concombre.png" alt="" aria-hidden="true">
+</a>
+</div>
+<figcaption style="text-align:center;color:#666;font-size:14px">Plat avec ingrédients cliquables « oeufs », « betterave » et « concombre »</figcaption>
+</figure>
+</section>
+<section id="installation">
+<h2>Installation</h2>
+<p>Pré-requis conseillés : un navigateur moderne. Si nécessaire, détaillez ici les dépendances.</p>
+<pre><code>git clone &lt;url-du-projet&gt;
+cd projet</code></pre>
+</section>
+<section id="utilisation">
+<h2>Utilisation</h2>
+<p>Expliquez les scénarios d’usage les plus courants et ajoutez des captures ou GIF si besoin.</p>
+<ol>
+<li>Étape 1 : description brève.</li>
+<li>Étape 2 : description brève.</li>
+<li>Étape 3 : description brève.</li>
+</ol>
+</section>
+<section id="api">
+<h2>Référence API</h2>
+<p>Documentez les fonctions, paramètres et exemples.</p>
+<pre><code>fonction faireQuelqueChose(option: string): Resultat</code></pre>
+</section>
+<section id="faq">
+<h2>FAQ</h2>
+<p><strong>Q :</strong> Question fréquente ?<br><strong>R :</strong> Réponse courte.</p>
+</section>
+<section id="ressources">
+<h2>Ressources</h2>
+<ul>
+<li>Documentation du projet</li>
+<li>Guide de contribution</li>
+<li>Licence</li>
+</ul>
+</section>
+<p><a href="#top" aria-label="Revenir en haut">↑ Haut de page</a></p>
+</main>
+</div>
+<footer>
+<span>© 2025 — WebDoc basique. Mettez à jour ce pied de page avec vos informations.</span>
+</footer>
+<script>
+document.addEventListener('click',function(e){
+var a=e.target.closest('a[href^="#"]');
+if(!a)return;
+var id=a.getAttribute('href').slice(1);
+var el=id?document.getElementById(id):null;
+if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth'});}
+});
+</script>
+</body>
+</html>
