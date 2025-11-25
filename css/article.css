@@ -188,6 +188,35 @@ main {
   color: #333;
 }
 
+.article-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.article-img {
+  width: 180px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.left-img {
+  order: 0;
+}
+
+.right-img {
+  order: 1;
+}
+
+.author {
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+
 footer {
   background-color: #e8f5e9;
   text-align: center;
