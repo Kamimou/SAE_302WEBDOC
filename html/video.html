@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vidéo – Les Cantines Vertes</title>
+
+  <link rel="stylesheet" href="../css/accueil.css">
+  <link rel="stylesheet" href="../css/video.css">
+</head>
+
+<body class="page-video">
+  <!-- Vidéo de fond -->
+  <video autoplay muted loop id="background-video">
+    <source src="../video.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la lecture de vidéos.
+  </video>
+
+  <!-- ACCUEIL EN HAUT -->
+  <main class="accueil-video">
+    <div class="left">
+      <div class="plate-zone">
+        <div class="ingredient-item top">
+          <a href="article.html">
+            <img src="../image/comcombre.png" alt="Ingrédient 1">
+            <p>Article</p>
+          </a>
+        </div>
+
+        <div class="ingredient-item left-ing">
+          <a href="galerie.html">
+            <img src="../image/oeuf.png" alt="Galerie photo">
+            <p>Galerie</p>
+          </a>
+        </div>
+
+        <div class="ingredient-item right-ing">
+          <a href="../index.html">
+            <img src="../image/betterave.png" alt="Vidéo">
+            <p>Accueil</p>
+          </a>
+        </div>
+
+        <img src="../image/plat.png" alt="Plat final" class="plate">
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="text-background">
+        <h1>Les Cantines Vertes</h1>
+        <h2>Cliquez sur un ingrédient</h2>
+      </div>
+    </div>
+  </main>
+
+  <!-- SECTION VIDÉO -->
+  <section class="video-section">
+    <div class="text-background video-header">
+      <h1>Reportage vidéo à la cantine bio</h1>
+      <p>Une journée au cœur de la cantine bio</p>
+    </div>
+
+    <div class="video-layout">
+
+      <!-- Vidéo -->
+      <article class="video-card">
+        <div class="video-frame">
+          <video controls src="../video/videoplayback.mp4" poster="../image/plat.png"></video>
+
+          <div class="video-overlay">
+            <span class="play-icon">▶</span>
+          </div>
+        </div>
+
+        <p class="video-caption">
+          Un aperçu des coulisses : Préparation d'une entrée bio.
+        </p>
+      </article>
+
+      <!-- Texte -->
+      <aside class="video-info">
+        <h2>Ce que tu vas découvrir</h2>
+        <ul>
+          <li><strong>Interview</strong> : Le chef parle du bio.</li>
+          <li><strong>La cuisine</strong> : Préparation d'une entrée bio.</li>
+          <li><strong>L’hygiène</strong> : Fiches et règlement.</li>
+          <li><strong>Les locaux</strong> : À quoi ressemble la cantine.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Les Cantines Vertes — Une alimentation saine et durable 🌱</p>
+  </footer>
+
+  <script src="../js/video.js" defer></script>
+</body>
+</html>
