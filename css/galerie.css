@@ -1,71 +1,223 @@
-/* Autoriser le scroll malgré overflow hidden de accueil.css */
+/* Scroll uniquement sur la page galerie */
 body.page-galerie {
   overflow-y: auto;
 }
 
-/* Descendre TOUT l'accueil en bloc, sans changer les positions des ingrédients */
-.accueil-galerie {
-  margin-top: 9rem /* Ajuste 5rem / 7rem si tu veux plus ou moins bas */
+/* Descendre l'accueil */
+body.page-galerie main.accueil-galerie {
+  margin-top: 10rem !important;
+  margin-bottom: 1rem !important;
 }
 
-/* --- GALERIE --- */
+/* --- SECTION GALERIE --- */
 .gallery-section {
-  padding: 3rem 5% 4rem;
+  padding: 3.5rem 4% 4.5rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
   position: relative;
   z-index: 1;
 }
 
 .gallery-header-box {
-  max-width: 900px;
+  max-width: 950px;
   margin: 0 auto;
+  text-align: center;
 }
 
+.gallery-header-box h1 {
+  font-size: 1.9rem;
+}
+
+.gallery-header-box p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* --- GRILLE SUPER ÉCARTÉE --- */
 .gallery-grid {
-  max-width: 1100px;
+  width: 100%;
+  max-width: 1900px;     /* SUPER LARGE */
   margin: 0 auto;
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.8rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 4rem;              /* GROS ESPACE ENTRE LES PHOTOS */
+  padding: 0 4rem;        /* ESPACE GAUCHE + DROITE */
 }
 
+/* Cartes */
 .gallery-card {
   background-color: rgba(232, 245, 233, 0.96);
-  border-radius: 18px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 22px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
   overflow: hidden;
-  transition: 0.25s ease;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    opacity 0.45s ease,
+    filter 0.35s ease;
+
+  opacity: 0;
+  transform: translateY(22px);
 }
 
+.gallery-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- IMAGES AGRANDIES --- */
 .gallery-card img {
   width: 100%;
-  height: 190px;
+  height: 330px; /* hauteur PRO */
   object-fit: cover;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.6s ease, filter 0.4s ease;
 }
 
 .gallery-card-text {
-  padding: 1.2rem;
+  padding: 1.5rem 1.6rem 1.6rem;
 }
 
+.gallery-card-text h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
+  color: #2e7d32;
+}
+
+.gallery-card-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #2e2e2e;
+}
+
+/* Hover */
 .gallery-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+  filter: brightness(1.03);
+}
+
+.gallery-card:hover img {
+  transform: scale(1.07);
+  filter: saturate(1.08);
+}
+
+/* --- LIGHTBOX PRO --- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox-inner {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 2rem 3rem;
+  max-width: 1000px;
+  width: 92%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lightbox-img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
+.lightbox-caption {
+  font-size: 1.15rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  color: #2e2e2e;
+}
+
+/* Bouton fermer */
+.lightbox-close {
+  position: absolute;
+  top: 0.8rem;
+  right: 1rem;
+  font-size: 2.3rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #222;
+}
+
+/* Flèches */
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(232, 245, 233, 0.95);
+  color: #2e7d32;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+}
+
+.lightbox-prev {
+  left: 1rem;
+}
+
+.lightbox-next {
+  right: 1rem;
 }
 
 /* Responsive */
 @media (max-width: 1024px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
+    padding: 0 2rem;
+    gap: 2.5rem;
+  }
+
+  .gallery-card img {
+    height: 260px;
   }
 }
 
 @media (max-width: 700px) {
   .gallery-grid {
     grid-template-columns: 1fr;
+    padding: 0 1.2rem;
+    gap: 2rem;
+  }
+
+  .gallery-card img {
+    height: 220px;
+  }
+
+  .lightbox-inner {
+    padding: 1.2rem 1.6rem;
+  }
+
+  .lightbox-arrow {
+    bottom: 1rem;
+    top: auto;
+    transform: none;
   }
 }
-
-
-
