@@ -6,7 +6,7 @@ body.page-galerie {
 /* Descendre l'accueil */
 body.page-galerie main.accueil-galerie {
   margin-top: 10rem !important;
-  margin-bottom: 10rem !important;
+  margin-bottom: 1rem !important;
 }
 
 /* --- SECTION GALERIE --- */
