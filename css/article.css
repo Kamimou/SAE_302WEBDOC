@@ -157,6 +157,8 @@ main {
 /* ------------------------- */
 /* Sections articles         */
 /* ------------------------- */
+
+
 .articles-container {
   width: 100%;
   background: rgba(255, 255, 255, 0.2);
@@ -187,6 +189,35 @@ main {
   line-height: 1.6;
   color: #333;
 }
+
+.article-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.article-img {
+  width: 500px;
+  display: block;
+  margin: 0 auto;
+}
+
+.left-img {
+  order: 0;
+}
+
+.right-img {
+  order: 1;
+}
+
+.author {
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 20px;
+}
+
 
 footer {
   background-color: #e8f5e9;
