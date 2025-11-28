@@ -1,3 +1,7 @@
+/* ------------------------------------------------ */
+/* ------------------- GLOBAL --------------------- */
+/* ------------------------------------------------ */
+
 body {
   margin: 0;
   padding: 0;
@@ -8,26 +12,32 @@ body {
   flex-direction: column;
   min-height: 100vh;
   position: relative;
-  overflow-x: hidden; /* Empêche le débordement horizontal */
+  overflow-x: hidden;
 }
 
+/* ------------------------------------------------ */
+/* ---------------- VIDEO DE FOND ---------------- */
+/* ------------------------------------------------ */
 
-/* --- Vidéo de fond --- */
+.video-container {
+  position: relative;
+}
 
 #background-video {
   position: absolute;
   top: 0;
-  bottom: 100%;
+  left: 0;
   width: 100%;
   object-fit: cover;
   z-index: -1;
-  opacity: 0,1;
   filter: brightness(0.55);
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0 85%);
 }
 
+/* ------------------------------------------------ */
+/* ---------------- ACCUEIL HAUT ----------------- */
+/* ------------------------------------------------ */
 
-/* --- Structure principale --- */
 main {
   flex: 1;
   display: flex;
@@ -39,8 +49,7 @@ main {
   z-index: 1;
 }
 
-/* --- Partie gauche : assiette + ingrédients --- */
-
+/* Partie gauche */
 
 .left {
   flex: 1;
@@ -52,12 +61,12 @@ main {
 
 .plate-zone {
   position: relative;
-  width: 580px; /* +10% */
+  width: 580px;
   height: 580px;
 }
 
 .plate {
-  width: 385px; /* +10% */
+  width: 385px;
   height: auto;
   border-radius: 50%;
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
@@ -83,15 +92,15 @@ main {
 
 .plate-text {
   margin-top: 450px;
-  text-decoration: none;
   font-size: 1.3rem;
   font-weight: 700;
-  color: white;     /* couleur visible */
+  color: white;
   position: relative;
-  z-index: 30;      /* AU-DESSUS de l'assiette */
+  z-index: 30;
 }
 
-/* --- Ingrédients autour de l’assiette --- */
+/* Ingrédients autour */
+
 .ingredient-item {
   position: absolute;
   display: flex;
@@ -107,13 +116,11 @@ main {
   height: 120px;
   border-radius: 100%;
   object-fit: cover;
-  margin-top: 15px; /* recentre parfaitement dans le cercle */
+  margin-top: 15px;
   position: relative;
   z-index: 2;
-
 }
 
-/* Cercle derrière chaque ingrédient */
 .ingredient-item::before {
   content: "";
   position: absolute;
@@ -124,13 +131,13 @@ main {
   height: 150px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.85);
-  z-index: -1; /* derrière l’image */
+  z-index: -1;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .ingredient-item a {
-  text-decoration: none; /* Supprime le soulignement bleu */
-  color: inherit; /* Garde la même couleur que le texte normal */
+  text-decoration: none;
+  color: inherit;
 }
 
 .ingredient-item p {
@@ -139,10 +146,10 @@ main {
   font-weight: 600;
   color: #ffffff;
   z-index: 3;
-  position: relative;
 }
 
-/* --- Position ajustée --- */
+/* Positions autour de l’assiette */
+
 .ingredient-item.top {
   top: -18%;
   left: 41%;
@@ -161,17 +168,13 @@ main {
   transform: translateY(-50%);
 }
 
-/* --- Animation commune à tous les ingrédients --- */
+/* Animation flottante */
+
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-/* --- Effets visuels --- */
 .ingredient-item:hover {
   transform: scale(1.1);
   filter: brightness(1.0);
@@ -181,7 +184,8 @@ main {
   box-shadow: 0 0 25px rgba(76, 175, 80, 0.6);
 }
 
-/* --- Partie droite : titre avec fond --- */
+/* Partie droite */
+
 .right {
   flex: 1;
   text-align: center;
@@ -189,41 +193,32 @@ main {
 
 .text-background {
   display: inline-block;
-  padding: 1.8rem 3.6rem; /* +20% d’espace autour */
+  padding: 1.8rem 3.6rem;
   background-color: rgba(232, 245, 233, 0.9);
   border-radius: 18px;
   box-shadow: 0 4px 18px rgba(0,0,0,0.12);
 }
 
 .right h1 {
-  font-size: 3.36rem; /* +20% */
+  font-size: 3.36rem;
   color: #2e7d32;
   margin-bottom: 0.7rem;
 }
 
 .right h2 {
-  font-size: 1.56rem; /* +20% */
+  font-size: 1.56rem;
   color: #4caf50;
 }
 
+/* ------------------------------------------------ */
+/* ---------------- SECTION GALERIE --------------- */
+/* ------------------------------------------------ */
 
-
-
-/* Partie Galerie */
-
-
-/* Scroll uniquement sur la page galerie */
-body.page-galerie {
-  overflow-y: auto;
-}
-
-/* Descendre l'accueil */
 body.page-galerie main.accueil-galerie {
   margin-top: 10rem !important;
-  margin-bottom: 1rem !important;
+  margin-bottom: 2rem !important;
 }
 
-/* --- SECTION GALERIE --- */
 .gallery-section {
   padding: 3.5rem 4% 4.5rem;
   display: flex;
@@ -239,93 +234,127 @@ body.page-galerie main.accueil-galerie {
   text-align: center;
 }
 
-.gallery-header-box h1 {
-  font-size: 1.9rem;
-}
+/* ------------------------------------------------ */
+/* ---------------- CARROUSEL 3 IMAGES ------------ */
+/* ------------------------------------------------ */
 
-.gallery-header-box p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-/* --- GRILLE SUPER ÉCARTÉE (centrée maintenant) --- */
-.gallery-grid {
-  width: 100%;
-  max-width: 1900px;     
+/* Grand cadre vert */
+.gallery-carousel {
+  position: relative;
+  width: 98%;              /* un peu plus large */
+  max-width: 1400px;       /* + large sur grand écran */
   margin: 0 auto;
-
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-
-  gap: 4rem;              
-  padding: 0;              /* ← centrage parfait */
-  justify-items: center;   /* ← centre chaque carte */
+  background: rgba(232, 245, 233, 0.96);
+  border-radius: 28px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
+  padding: 3.5rem 7rem;    /* + de marge à gauche/droite */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Cartes */
-.gallery-card {
-  background-color: rgba(232, 245, 233, 0.96);
-  border-radius: 22px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-  overflow: hidden;
+
+/* Bande d’images */
+.carousel-track {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  overflow: visible;
+}
+
+/* Images (3 visibles) */
+.carousel-image {
+  display: none;
+  flex: 0 0 320px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  opacity: 0.25;                /* bien assombri par défaut */
+  transform: scale(0.82);
+  cursor: zoom-in;
   transition:
     transform 0.35s ease,
-    box-shadow 0.35s ease,
-    opacity 0.45s ease,
-    filter 0.35s ease;
-
-  opacity: 0;
-  transform: translateY(22px);
+    opacity 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
-.gallery-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* --- IMAGES AGRANDIES --- */
-.gallery-card img {
-  width: 100%;
-  height: 330px; 
-  object-fit: cover;
+/* visibles */
+.carousel-image.visible {
   display: block;
+}
+
+/* Image centrale */
+.carousel-image.active {
+  flex-basis: 380px;
+  height: 380px;
+  opacity: 1;
+  transform: scale(1.08);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+}
+
+/* Voisines gauche/droite */
+.carousel-image.prev,
+.carousel-image.next {
+  opacity: 0.55;
+  transform: scale(0.92) translateY(-4px);
+}
+
+/* Flèches à l’extérieur du cadre d’images */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
   cursor: pointer;
-  transition: transform 0.6s ease, filter 0.4s ease;
-}
-
-.gallery-card-text {
-  padding: 1.5rem 1.6rem 1.6rem;
-}
-
-.gallery-card-text h2 {
-  font-size: 1.25rem;
-  margin-bottom: 0.6rem;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
   color: #2e7d32;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  transition: transform 0.25s ease, background 0.25s ease;
 }
 
-.gallery-card-text p {
+/* On pousse les flèches un peu hors du cadre vert */
+.carousel-prev {
+  left: -55px;   /* encore plus vers l’extérieur */
+}
+
+.carousel-next {
+  right: -55px;
+}
+
+.carousel-arrow:hover {
+  transform: translateY(-50%) scale(1.12);
+  background: #e8f5e9;
+}
+
+/* Légende */
+
+.carousel-caption {
+  text-align: center;
   font-size: 1.1rem;
-  line-height: 1.6;
   color: #2e2e2e;
+  max-width: 900px;
+  margin: 1.4rem auto 0 auto;
 }
 
-/* Hover */
-.gallery-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
-  filter: brightness(1.03);
-}
+/* ------------------------------------------------ */
+/* -------------------- LIGHTBOX ------------------ */
+/* ------------------------------------------------ */
 
-.gallery-card:hover img {
-  transform: scale(1.07);
-  filter: saturate(1.08);
-}
-
-/* --- LIGHTBOX PRO --- */
 .lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.85);
   display: none;
   align-items: center;
   justify-content: center;
@@ -337,102 +366,73 @@ body.page-galerie main.accueil-galerie {
 }
 
 .lightbox-inner {
-  background: #ffffff;
-  border-radius: 22px;
-  padding: 2rem 3rem;
-  max-width: 1000px;
-  width: 92%;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  max-width: 95vw;
+  max-height: 95vh;
+  padding: 0;
+  background: transparent;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
 .lightbox-img {
-  width: 100%;
-  height: auto;
+  max-width: 100%;
+  max-height: 90vh;
   border-radius: 14px;
+  object-fit: contain;
 }
 
 .lightbox-caption {
-  font-size: 1.15rem;
-  margin-top: 0.5rem;
+  font-size: 1.05rem;
   text-align: center;
-  color: #2e2e2e;
+  color: #ffffff;
 }
 
-/* Bouton fermer */
+/* Fermer */
+
 .lightbox-close {
   position: absolute;
-  top: 0.8rem;
-  right: 1rem;
-  font-size: 2.3rem;
+  top: 1.2rem;
+  right: 1.4rem;
+  font-size: 2.4rem;
   border: none;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.6);
   cursor: pointer;
-  color: #222;
+  color: #ffffff;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Flèches */
+/* Flèches lightbox */
+
 .lightbox-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   border: none;
-  width: 55px;
-  height: 55px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 2.3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(232, 245, 233, 0.95);
-  color: #2e7d32;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+  background: rgba(0, 0, 0, 0.65);
+  color: #ffffff;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.4);
 }
 
 .lightbox-prev {
-  left: 1rem;
+  left: 1.5rem;
 }
 
 .lightbox-next {
-  right: 1rem;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 0 2rem;
-    gap: 2.5rem;
-  }
-
-  .gallery-card img {
-    height: 260px;
-  }
-}
-
-@media (max-width: 700px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    padding: 0 1.2rem;
-    gap: 2rem;
-  }
-
-  .gallery-card img {
-    height: 220px;
-  }
-
-  .lightbox-inner {
-    padding: 1.2rem 1.6rem;
-  }
-
-  .lightbox-arrow {
-    bottom: 1rem;
-    top: auto;
-    transform: none;
-  }
+  right: 1.5rem;
 }

@@ -1,79 +1,115 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // --- Animation au scroll pour les cartes ---
-  const cards = document.querySelectorAll('.gallery-card');
+  // --- Carrousel ---
+  const images = Array.from(document.querySelectorAll('.carousel-image'));
+  const caption = document.querySelector('.carousel-caption');
+  const btnPrev = document.querySelector('.carousel-prev');
+  const btnNext = document.querySelector('.carousel-next');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      } else {
-        entry.target.classList.remove('visible');
-      }
-    });
-  }, {
-    threshold: 0.2
-  });
-
-  cards.forEach(card => observer.observe(card));
-
-  // --- Lightbox (image en grand + navigation) ---
-  const images = Array.from(document.querySelectorAll('.gallery-card img'));
+  // --- Lightbox ---
   const lightbox = document.querySelector('.lightbox');
   const lightboxImg = document.querySelector('.lightbox-img');
   const lightboxCaption = document.querySelector('.lightbox-caption');
-  const btnClose = document.querySelector('.lightbox-close');
-  const btnPrev = document.querySelector('.lightbox-prev');
-  const btnNext = document.querySelector('.lightbox-next');
+  const lightboxClose = document.querySelector('.lightbox-close');
+  const lightboxPrev = document.querySelector('.lightbox-prev');
+  const lightboxNext = document.querySelector('.lightbox-next');
+
+  if (!images.length) return;
 
   let currentIndex = 0;
+  const len = images.length;
+  const mod = (n, m) => ((n % m) + m) % m;
+
+  // ---------------- MISE À JOUR CARROUSEL ----------------
+
+  function updateCarousel() {
+    images.forEach(img => {
+      img.classList.remove('active', 'prev', 'next', 'visible');
+    });
+
+    const center = mod(currentIndex, len);
+    const prev = mod(center - 1, len);
+    const next = mod(center + 1, len);
+
+    images[center].classList.add('active', 'visible');
+    images[prev].classList.add('prev', 'visible');
+    images[next].classList.add('next', 'visible');
+
+    const img = images[center];
+    if (caption) {
+      caption.textContent = img.dataset.caption || img.alt || '';
+    }
+  }
+
+  function goNext() {
+    currentIndex = mod(currentIndex + 1, len);
+    updateCarousel();
+    if (lightbox && lightbox.classList.contains('open')) {
+      refreshLightbox();
+    }
+  }
+
+  function goPrev() {
+    currentIndex = mod(currentIndex - 1, len);
+    updateCarousel();
+    if (lightbox && lightbox.classList.contains('open')) {
+      refreshLightbox();
+    }
+  }
+
+  // ---------------- LIGHTBOX ----------------
 
   function openLightbox(index) {
-    const img = images[index];
-    if (!img) return;
     currentIndex = index;
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt || '';
-    lightboxCaption.textContent = img.alt || '';
+    updateCarousel();
+    refreshLightbox();
     lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
   }
 
   function closeLightbox() {
     lightbox.classList.remove('open');
-    lightboxImg.src = '';
+    lightbox.setAttribute('aria-hidden', 'true');
   }
 
-  function showNext() {
-    currentIndex = (currentIndex + 1) % images.length;
-    openLightbox(currentIndex);
+  function refreshLightbox() {
+    const img = images[mod(currentIndex, len)];
+    if (!img) return;
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt || '';
+    lightboxCaption.textContent = img.dataset.caption || img.alt || '';
   }
 
-  function showPrev() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    openLightbox(currentIndex);
-  }
+  // Boutons carrousel
+  if (btnPrev) btnPrev.addEventListener('click', goPrev);
+  if (btnNext) btnNext.addEventListener('click', goNext);
 
+  // Clic sur image = ouverture lightbox
   images.forEach((img, index) => {
     img.addEventListener('click', () => {
       openLightbox(index);
     });
   });
 
-  btnClose.addEventListener('click', closeLightbox);
-  btnNext.addEventListener('click', showNext);
-  btnPrev.addEventListener('click', showPrev);
+  // Boutons lightbox
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxPrev) lightboxPrev.addEventListener('click', goPrev);
+  if (lightboxNext) lightboxNext.addEventListener('click', goNext);
 
-  // Fermer en cliquant en dehors de la fenêtre
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-      closeLightbox();
-    }
-  });
+  // Fermer en cliquant sur le fond
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+  }
 
-  // Fermer / naviguer au clavier
+  // Navigation clavier
   document.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('open')) return;
     if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') showNext();
-    if (e.key === 'ArrowLeft') showPrev();
+    if (e.key === 'ArrowRight') goNext();
+    if (e.key === 'ArrowLeft') goPrev();
   });
+
+  // Init
+  updateCarousel();
 });

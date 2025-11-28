@@ -10,14 +10,14 @@
 
 <body class="page-galerie">
   <div class="video-container">
-  <video autoplay muted loop id="background-video">
-    <source src="../video/VideoDeFond.mp4" type="video/mp4">
-    Votre navigateur ne supporte pas la lecture de vidéos.
-    </div>
-  </video>
+    <video autoplay muted loop id="background-video">
+      <source src="../video/VideoDeFond.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la lecture de vidéos.
+    </video>
+  </div>
 
-  <!-- ACCUEIL EN HAUT -->
-<main class="accueil-galerie">
+  <!-- ACCUEIL EN HAUT (identique) -->
+  <main class="accueil-galerie">
     <div class="left">
       <div class="plate-zone">
         
@@ -41,6 +41,7 @@
             <p>WebDocumentaire</p>
           </a>
         </div>
+
         <div class="plate-clickable">
           <a href="../index.html">
             <img src="../image/plat.png" alt="Plat final" class="plate">
@@ -58,7 +59,7 @@
     </div>
   </main>
 
-  <!-- GALERIE EN BAS -->
+  <!-- GALERIE EN BAS : TITRE + CARROUSEL -->
   <section class="gallery-section">
     <div class="text-background gallery-header-box">
       <h1>Galerie de la cantine bio</h1>
@@ -68,91 +69,80 @@
       </p>
     </div>
 
-    <div class="gallery-grid">
+    <div class="gallery-carousel">
+      <button class="carousel-arrow carousel-prev" aria-label="Image précédente">‹</button>
 
-      <article class="gallery-card">
-        <img src="../image/bureau.jpg" alt="Bureau de la cantine">
-        <div class="gallery-card-text">
-          <h2>Bureau</h2>
-          <p>Espace administratif où s’organisent les menus et la gestion du service.</p>
-        </div>
-      </article>
+      <div class="carousel-track">
+        <img 
+          src="../image/bureau.jpg" 
+          alt="Bureau de la cantine"
+          class="carousel-image active"
+          data-caption="Bureau – Espace administratif où s’organisent les menus et la gestion du service.">
+        
+        <img 
+          src="../image/cantine.jpg" 
+          alt="Salle de cantine"
+          class="carousel-image"
+          data-caption="Salle de cantine – Un espace lumineux et convivial où les élèves partagent leur repas bio.">
+        
+        <img 
+          src="../image/cuinisentre.jpg" 
+          alt="Entrée de la cuisine"
+          class="carousel-image"
+          data-caption="Entrée de la cuisine – Accès réservé au personnel pour garantir la sécurité alimentaire.">
+        
+        <img 
+          src="../image/cuisinegenral.jpg" 
+          alt="Cuisine générale"
+          class="carousel-image"
+          data-caption="Cuisine générale – Postes de travail où les plats bio sont préparés chaque jour.">
+        
+        <img 
+          src="../image/frigotemp.jpg" 
+          alt="Contrôle des frigos"
+          class="carousel-image"
+          data-caption="Contrôle des frigos – Relevé des températures pour un respect strict de la chaîne du froid.">
+        
+        <img 
+          src="../image/laveplateau.jpg" 
+          alt="Lave-plateaux"
+          class="carousel-image"
+          data-caption="Lave-plateaux – Hygiène renforcée : séparation propre / sale.">
+        
+        <img 
+          src="../image/laverie.jpg" 
+          alt="Laverie"
+          class="carousel-image"
+          data-caption="Laverie – Nettoyage et séchage de la vaisselle dans de bonnes conditions.">
 
-      <article class="gallery-card">
-        <img src="../image/cantine.jpg" alt="Salle de cantine">
-        <div class="gallery-card-text">
-          <h2>Salle de cantine</h2>
-          <p>Un espace lumineux et convivial où les élèves partagent leur repas bio.</p>
-        </div>
-      </article>
+        <img 
+          src="../image/four.jpg" 
+          alt="Four professionnel"
+          class="carousel-image"
+          data-caption="Four – Une cuisson homogène grâce à un four professionnel performant.">
+        
+        <img 
+          src="../image/plandenettoyage.jpg" 
+          alt="Plan de nettoyage"
+          class="carousel-image"
+          data-caption="Plan de nettoyage – Fréquence, produits et zones détaillés clairement.">
+        
+        <img 
+          src="../image/fichecontroletemp.jpg" 
+          alt="Fiche contrôle températures"
+          class="carousel-image"
+          data-caption="Fiche température – Suivi précis des températures lors du service.">
+      </div>
 
-      <article class="gallery-card">
-        <img src="../image/cuinisentre.jpg" alt="Entrée de la cuisine">
-        <div class="gallery-card-text">
-          <h2>Entrée de la cuisine</h2>
-          <p>Accès réservé au personnel pour garantir la sécurité alimentaire.</p>
-        </div>
-      </article>
-
-      <article class="gallery-card">
-        <img src="../image/cuisinegenral.jpg" alt="Cuisine générale">
-        <div class="gallery-card-text">
-          <h2>Cuisine générale</h2>
-          <p>Postes de travail où les plats bio sont préparés chaque jour.</p>
-        </div>
-      </article>
-
-      <article class="gallery-card">
-        <img src="../image/four.jpg" alt="Four professionnel">
-        <div class="gallery-card-text">
-          <h2>Four</h2>
-          <p>Une cuisson homogène grâce à un four professionnel performant.</p>
-        </div>
-      </article>
-
-      <article class="gallery-card">
-        <img src="../image/frigotemp.jpg" alt="Contrôle des frigos">
-        <div class="gallery-card-text">
-          <h2>Contrôle des frigos</h2>
-          <p>Relevé des températures pour un respect strict de la chaîne du froid.</p>
-        </div>
-      </article>
-
-      <article class="gallery-card">
-        <img src="../image/laveplateau.jpg" alt="Lave-plateaux">
-        <div class="gallery-card-text">
-          <h2>Lave-plateaux</h2>
-          <p>Hygiène renforcée : séparation propre / sale.</p>
-        </div>
-      </article>
-
-      <article class="gallery-card">
-        <img src="../image/laverie.jpg" alt="Laverie">
-        <div class="gallery-card-text">
-          <h2>Laverie</h2>
-          <p>Nettoyage et séchage de la vaisselle dans de bonnes conditions.</p>
-        </div>
-      </article>
-
-      <article class="gallery-card">
-        <img src="../image/plandenettoyage.jpg" alt="Plan de nettoyage">
-        <div class="gallery-card-text">
-          <h2>Plan de nettoyage</h2>
-          <p>Fréquence, produits et zones détaillés clairement.</p>
-        </div>
-      </article>
-
-      <article class="gallery-card">
-        <img src="../image/fichecontroletemp.jpg" alt="Fiche contrôle températures">
-        <div class="gallery-card-text">
-          <h2>Fiche température</h2>
-          <p>Suivi précis des températures lors du service.</p>
-        </div>
-      </article>
-
+      <button class="carousel-arrow carousel-next" aria-label="Image suivante">›</button>
     </div>
+
+    <p class="carousel-caption">
+      Bureau – Espace administratif où s’organisent les menus et la gestion du service.
+    </p>
   </section>
-   <!-- LIGHTBOX -->
+
+  <!-- LIGHTBOX PLEIN ÉCRAN -->
   <div class="lightbox" aria-hidden="true">
     <div class="lightbox-inner">
       <button class="lightbox-close" aria-label="Fermer">×</button>
