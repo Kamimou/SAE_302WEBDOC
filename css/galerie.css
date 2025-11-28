@@ -1,3 +1,217 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #eafbea, #ffffff);
+  color: #2e2e2e;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden; /* Empêche le débordement horizontal */
+}
+
+
+/* --- Vidéo de fond --- */
+
+#background-video {
+  position: absolute;
+  top: 0;
+  bottom: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0,1;
+  filter: brightness(0.55);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 85%);
+}
+
+
+/* --- Structure principale --- */
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0%;
+  left: 4%;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Partie gauche : assiette + ingrédients --- */
+
+
+.left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.plate-zone {
+  position: relative;
+  width: 580px; /* +10% */
+  height: 580px;
+}
+
+.plate {
+  width: 385px; /* +10% */
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.plate-clickable {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.plate-clickable a {
+  text-decoration: none;
+  color: white;
+}
+
+.plate-text {
+  margin-top: 450px;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;     /* couleur visible */
+  position: relative;
+  z-index: 30;      /* AU-DESSUS de l'assiette */
+}
+
+/* --- Ingrédients autour de l’assiette --- */
+.ingredient-item {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  animation: float 4s ease-in-out infinite;
+}
+
+.ingredient-item img {
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+  object-fit: cover;
+  margin-top: 15px; /* recentre parfaitement dans le cercle */
+  position: relative;
+  z-index: 2;
+
+}
+
+/* Cercle derrière chaque ingrédient */
+.ingredient-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  z-index: -1; /* derrière l’image */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.ingredient-item a {
+  text-decoration: none; /* Supprime le soulignement bleu */
+  color: inherit; /* Garde la même couleur que le texte normal */
+}
+
+.ingredient-item p {
+  margin-top: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  z-index: 3;
+  position: relative;
+}
+
+/* --- Position ajustée --- */
+.ingredient-item.top {
+  top: -18%;
+  left: 41%;
+  transform: translateX(-50%);
+}
+
+.ingredient-item.left-ing {
+  top: 50%;
+  left: -30%;
+  transform: translateY(-50%);
+}
+
+.ingredient-item.right-ing {
+  top: 50%;
+  right: -30%;
+  transform: translateY(-50%);
+}
+
+/* --- Animation commune à tous les ingrédients --- */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* --- Effets visuels --- */
+.ingredient-item:hover {
+  transform: scale(1.1);
+  filter: brightness(1.0);
+}
+
+.ingredient-item:hover img {
+  box-shadow: 0 0 25px rgba(76, 175, 80, 0.6);
+}
+
+/* --- Partie droite : titre avec fond --- */
+.right {
+  flex: 1;
+  text-align: center;
+}
+
+.text-background {
+  display: inline-block;
+  padding: 1.8rem 3.6rem; /* +20% d’espace autour */
+  background-color: rgba(232, 245, 233, 0.9);
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+}
+
+.right h1 {
+  font-size: 3.36rem; /* +20% */
+  color: #2e7d32;
+  margin-bottom: 0.7rem;
+}
+
+.right h2 {
+  font-size: 1.56rem; /* +20% */
+  color: #4caf50;
+}
+
+
+
+
+/* Partie Galerie */
+
+
 /* Scroll uniquement sur la page galerie */
 body.page-galerie {
   overflow-y: auto;
