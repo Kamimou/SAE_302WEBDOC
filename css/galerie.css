@@ -241,18 +241,17 @@ body.page-galerie main.accueil-galerie {
 /* Grand cadre vert */
 .gallery-carousel {
   position: relative;
-  width: 98%;              /* un peu plus large */
-  max-width: 1400px;       /* + large sur grand écran */
+  width: 98%;
+  max-width: 1400px;
   margin: 0 auto;
   background: rgba(232, 245, 233, 0.96);
   border-radius: 28px;
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
-  padding: 3.5rem 7rem;    /* + de marge à gauche/droite */
+  padding: 3.5rem 7rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 
 /* Bande d’images */
 .carousel-track {
@@ -272,7 +271,7 @@ body.page-galerie main.accueil-galerie {
   object-fit: cover;
   border-radius: 18px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-  opacity: 0.25;                /* bien assombri par défaut */
+  opacity: 0.25;
   transform: scale(0.82);
   cursor: zoom-in;
   transition:
@@ -302,7 +301,7 @@ body.page-galerie main.accueil-galerie {
   transform: scale(0.92) translateY(-4px);
 }
 
-/* Flèches à l’extérieur du cadre d’images */
+/* Flèches du carrousel */
 .carousel-arrow {
   position: absolute;
   top: 50%;
@@ -325,7 +324,7 @@ body.page-galerie main.accueil-galerie {
 
 /* On pousse les flèches un peu hors du cadre vert */
 .carousel-prev {
-  left: -55px;   /* encore plus vers l’extérieur */
+  left: -55px;
 }
 
 .carousel-next {
@@ -337,14 +336,65 @@ body.page-galerie main.accueil-galerie {
   background: #e8f5e9;
 }
 
-/* Légende */
+/* ------------------------------------------------ */
+/* ----------------- LÉGENDE DESIGN --------------- */
+/* ------------------------------------------------ */
 
 .carousel-caption {
-  text-align: center;
-  font-size: 1.1rem;
+  max-width: 1000px;
+  margin: 2rem auto 0 auto;
+  padding: 1.4rem 2.2rem 1.6rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: #2e2e2e;
-  max-width: 900px;
-  margin: 1.4rem auto 0 auto;
+  position: relative;
+  text-align: left;
+}
+
+/* Petit badge au-dessus de la légende */
+.carousel-caption::before {
+  content: "Focus sur la zone";
+  position: absolute;
+  top: -0.9rem;
+  left: 2rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.8rem;
+  border-radius: 999px;
+  background: #2e7d32;
+  color: #ffffff;
+}
+
+/* Petite barre décorative à gauche */
+.carousel-caption::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.9rem;
+  height: 60%;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(to bottom, #66bb6a, #2e7d32);
+}
+
+/* Animation appliquée à chaque changement */
+.caption-animate {
+  animation: captionFade 0.45s ease-out;
+}
+
+@keyframes captionFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ------------------------------------------------ */
@@ -435,4 +485,64 @@ body.page-galerie main.accueil-galerie {
 
 .lightbox-next {
   right: 1.5rem;
+}
+
+/* ------------------------------------------------ */
+/* ------------------ RESPONSIVE ------------------ */
+/* ------------------------------------------------ */
+
+@media (max-width: 1024px) {
+  .gallery-section {
+    padding: 3rem 4% 3.5rem;
+  }
+
+  .gallery-carousel {
+    padding: 2.8rem 4.5rem;
+  }
+
+  .carousel-arrow {
+    width: 56px;
+    height: 56px;
+    font-size: 1.8rem;
+  }
+
+  .carousel-prev { left: -40px; }
+  .carousel-next { right: -40px; }
+}
+
+@media (max-width: 700px) {
+  main {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .gallery-section {
+    padding: 2.5rem 4% 3rem;
+  }
+
+  .gallery-carousel {
+    padding: 2.5rem 2.5rem;
+  }
+
+  .carousel-track {
+    gap: 1.5rem;
+  }
+
+  .carousel-image,
+  .carousel-image.active {
+    flex: 0 0 260px;
+    height: 260px;
+  }
+
+  .carousel-prev { left: -25px; }
+  .carousel-next { right: -25px; }
+
+  .carousel-caption {
+    padding: 1.2rem 1.4rem 1.3rem;
+    font-size: 0.95rem;
+  }
+
+  .carousel-caption::before {
+    left: 1.4rem;
+  }
 }
