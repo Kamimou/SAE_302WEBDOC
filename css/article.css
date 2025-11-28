@@ -281,6 +281,18 @@ main {
   color: #333;
 }
 
+.article-section ul {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.article-section li {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+}
+
 .article-block {
   display: flex;
   align-items: flex-start;
@@ -290,15 +302,21 @@ main {
 }
 
 .article-img {
-  width: 400px;
+  width: 500px;
   display: block;
-  margin: 0 auto;
+  margin-left: 0 auto;
 }
 
 .article2-img {
+  width: 400px;
+  display: block;
+  margin-left: 0 auto;
+}
+
+.article3-img {
   width: 300px;
   display: block;
-  margin: 0 auto;
+  margin-left: 0 auto;
 }
 
 .left-img {
