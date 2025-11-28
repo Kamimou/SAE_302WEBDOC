@@ -2,20 +2,23 @@
 /* ---------------- PAGE VIDEO -------------------- */
 /* ------------------------------------------------ */
 
-/* Permet le scroll sur cette page */
+/* Permet le scroll uniquement sur cette page */
 body.page-video {
   overflow-y: auto;
 }
 
-/* Accueil (assiette) en haut, même logique que pour .accueil-galerie */
+/* Accueil haut (assiette) */
 main.accueil-video {
-  margin-top: 10rem;
-  margin-bottom: 2rem;
+  margin-top: 10rem !important;
+  margin-bottom: 2rem !important;
 }
 
-/* SECTION VIDÉO DESSOUS L’ACCUEIL */
+/* ------------------------------------------------ */
+/* ---------------- SECTION VIDÉO ------------------ */
+/* ------------------------------------------------ */
+
 .video-section {
-  padding: 3.5rem 4% 4.5rem;  /* même logique que .gallery-section */
+  padding: 3.5rem 4% 4.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +27,7 @@ main.accueil-video {
   z-index: 1;
 }
 
-/* Titre bloc vert */
+/* Titre vert */
 .video-header {
   text-align: center;
   padding: 2rem 3rem;
@@ -45,17 +48,21 @@ main.accueil-video {
   color: #3a3a3a;
 }
 
-/* Layout principal : vidéo + texte à droite */
+/* ------------------------------------------------ */
+/* ----------- VIDÉO + TEXTE À DROITE ------------- */
+/* ------------------------------------------------ */
+
 .video-layout {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;   /* ⭐ CENTRAGE VERTICAL */
   gap: 3rem;
   width: 100%;
   max-width: 1400px;
 }
 
-/* Carte vidéo à gauche */
+/* ----------- VIDÉO ----------- */
+
 .video-card {
   width: 55%;
   background: rgba(255,255,255,0.8);
@@ -66,7 +73,6 @@ main.accueil-video {
   overflow: hidden;
 }
 
-/* Cadre vidéo */
 .video-frame {
   position: relative;
   width: 100%;
@@ -76,7 +82,6 @@ main.accueil-video {
   padding-bottom: 0.4rem;
 }
 
-/* Vidéo elle-même */
 .video-frame video {
   width: 100%;
   display: block;
@@ -85,14 +90,16 @@ main.accueil-video {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
 }
 
-/* Légende sous la vidéo */
+/* ⭐ Légende sous la vidéo */
 .video-caption {
   text-align: center;
-  font-size: 1.05rem;
-  margin-top: 0.8rem;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-top: 0.9rem;
 }
 
-/* Overlay Play */
+/* Play overlay */
+
 .video-overlay {
   position: absolute;
   inset: 0;
@@ -108,7 +115,6 @@ main.accueil-video {
   pointer-events: none;
 }
 
-/* Bouton Play rond avec glow vert */
 .play-icon {
   width: 95px;
   height: 95px;
@@ -131,8 +137,7 @@ main.accueil-video {
 
   opacity: 0;
   transform: scale(0.75);
-  transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
-
+  transition: transform 0.4s ease, opacity 0.4s ease;
   animation: pulseGlow 2.2s infinite ease-in-out;
 }
 
@@ -141,36 +146,17 @@ main.accueil-video {
   transform: scale(1);
 }
 
-.play-icon:hover {
-  transform: scale(1.12);
-  box-shadow:
-    0 0 15px rgba(46, 125, 50, 0.55),
-    0 0 30px rgba(46, 125, 50, 0.45);
-}
-
-/* Aura animée */
+/* Glow */
 @keyframes pulseGlow {
-  0% {
-    box-shadow:
-      0 0 10px rgba(46, 125, 50, 0.4),
-      0 0 20px rgba(46, 125, 50, 0.3);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow:
-      0 0 18px rgba(46, 125, 50, 0.55),
-      0 0 36px rgba(46, 125, 50, 0.4);
-    transform: scale(1.05);
-  }
-  100% {
-    box-shadow:
-      0 0 10px rgba(46, 125, 50, 0.4),
-      0 0 20px rgba(46, 125, 50, 0.3);
-    transform: scale(1);
-  }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
-/* Bloc texte à droite */
+/* ------------------------------------------------ */
+/* ----------- TEXTE “CE QUE TU VAS DÉCOUVRIR” ----- */
+/* ------------------------------------------------ */
+
 .video-info {
   width: 40%;
   background: white;
@@ -178,6 +164,8 @@ main.accueil-video {
   border-radius: 20px;
   box-shadow: 0 8px 22px rgba(0,0,0,0.12);
   animation: fadeSlide 1s ease forwards;
+
+  margin-top: 2rem;   /* ⭐ Ajuste ici si tu veux plus bas */
 }
 
 .video-info h2 {
@@ -191,13 +179,16 @@ main.accueil-video {
   line-height: 1.6;
 }
 
-/* Animation d’apparition */
+/* Animation */
 @keyframes fadeSlide {
   from { opacity: 0; transform: translateY(15px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive : vidéo au-dessus, texte en dessous */
+/* ------------------------------------------------ */
+/* ---------------- RESPONSIVE -------------------- */
+/* ------------------------------------------------ */
+
 @media (max-width: 900px) {
 
   .video-layout {
@@ -212,6 +203,7 @@ main.accueil-video {
   }
 
   .video-info {
+    margin-top: 1.5rem;
     padding: 1.8rem;
   }
 }
