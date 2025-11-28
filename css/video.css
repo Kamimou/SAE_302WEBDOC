@@ -55,7 +55,7 @@ main.accueil-video {
 .video-layout {
   display: flex;
   justify-content: center;
-  align-items: center;   /* ⭐ CENTRAGE VERTICAL */
+  align-items: center;   /* Centrage vertical du bloc texte */
   gap: 3rem;
   width: 100%;
   max-width: 1400px;
@@ -73,24 +73,28 @@ main.accueil-video {
   overflow: hidden;
 }
 
+/* ⭐ CADRE VIDÉO FIXE (ne bouge plus quand on clique sur play) */
 .video-frame {
   position: relative;
   width: 100%;
+  aspect-ratio: 16 / 9;         /* Ratio fixe type YouTube */
   border-radius: 16px;
   overflow: hidden;
   background: #00000012;
-  padding-bottom: 0.4rem;
 }
 
+/* ⭐ La vidéo occupe TOUT le cadre, sans changer sa taille */
 .video-frame video {
+  position: absolute;
+  inset: 0;
   width: 100%;
+  height: 100%;
+  object-fit: cover;             /* remplie le cadre proprement */
   display: block;
-  border-radius: 16px;
-  margin-bottom: -4px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
 }
 
-/* ⭐ Légende sous la vidéo */
+/* Légende sous la vidéo */
 .video-caption {
   text-align: center;
   font-size: 1.2rem;
@@ -146,7 +150,7 @@ main.accueil-video {
   transform: scale(1);
 }
 
-/* Glow */
+/* Glow léger */
 @keyframes pulseGlow {
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
@@ -165,7 +169,7 @@ main.accueil-video {
   box-shadow: 0 8px 22px rgba(0,0,0,0.12);
   animation: fadeSlide 1s ease forwards;
 
-  margin-top: 2rem;   /* ⭐ Ajuste ici si tu veux plus bas */
+  margin-top: 2rem;   /* ajuste si tu le veux plus bas/haut */
 }
 
 .video-info h2 {
@@ -203,7 +207,7 @@ main.accueil-video {
   }
 
   .video-info {
-    margin-top: 1.5rem;
+    margin-top: 3rem;
     padding: 1.8rem;
   }
 }
