@@ -211,3 +211,15 @@ main.accueil-video {
     padding: 1.8rem;
   }
 }
+
+
+
+/* --- Footer --- */
+footer {
+  background-color: #e8f5e9;
+  text-align: center;
+  padding: 1rem;
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: auto;
+}

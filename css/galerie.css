@@ -571,3 +571,15 @@ body.page-galerie main.accueil-galerie {
     padding: 0.7rem 1.2rem 0.9rem;
   }
 }
+
+
+
+/* --- Footer --- */
+footer {
+  background-color: #e8f5e9;
+  text-align: center;
+  padding: 1rem;
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
