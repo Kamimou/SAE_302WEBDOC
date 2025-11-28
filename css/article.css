@@ -17,7 +17,6 @@ body {
 #background-video {
   position: absolute;
   top: 0;
-  bottom: 100%;
   width: 100%;
   object-fit: cover;
   z-index: -1;
@@ -34,7 +33,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10rem 0%;
+  padding: 8rem 0%;
   left: 4%;
   position: relative;
   z-index: 1;
@@ -219,13 +218,27 @@ main {
 
 
 .Article-section {
-  padding: 3.5rem 4% 4.5rem;
+  padding: 1rem 0% 4.5rem;
   display: flex;
   flex-direction: column;
-  align-items: center; /* <- Ajoute ceci */
   gap: 2.5rem;
   position: relative;
   z-index: 1;
+}
+
+.Article-header-box {
+  max-width: 950px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.Article-header-box h1 {
+  font-size: 1.9rem;
+}
+
+.Article-header-box p {
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
 .Article-header-box {
@@ -301,6 +314,20 @@ main {
   flex-wrap: wrap;
 }
 
+.articlePrincipal-img {
+  width: 0px;
+  display: block;
+  margin-right: 0 auto;
+}
+
+
+.articlePrincipal2-img {
+  width: 1000px;
+  display: block;
+  margin-right: 0 auto;
+}
+
+
 .article-img {
   width: 500px;
   display: block;
@@ -313,11 +340,17 @@ main {
   margin-left: 0 auto;
 }
 
-.article3-img {
-  width: 300px;
-  display: block;
-  margin-left: 0 auto;
+.cote-a-cote {
+    display: flex;        /* aligne les images côte à côte */
+    gap: 10px;            /* espace entre les images */
+    justify-content: center; /* centre le tout (optionnel) */
 }
+
+.images img {
+    width: 100px;         /* ajuste la taille si tu veux */
+    object-fit: contain;  /* garde les proportions */
+}
+
 
 .left-img {
   order: 0;
@@ -342,4 +375,6 @@ footer {
   color: #555;
   font-size: 0.9rem;
   margin-top: auto;
+  position: relative;
+  bottom: -70px;
 }
