@@ -73,23 +73,23 @@ main.accueil-video {
   overflow: hidden;
 }
 
-/* CADRE VIDÉO FIXE (ne bouge plus quand on clique sur play) */
+/* ⭐ CADRE VIDÉO FIXE (ne bouge plus quand on clique sur play) */
 .video-frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;      
+  aspect-ratio: 16 / 9;         /* Ratio fixe type YouTube */
   border-radius: 16px;
   overflow: hidden;
   background: #00000012;
 }
 
-/* Vidéo qui prend tout le cadre */
+/* ⭐ La vidéo occupe TOUT le cadre, sans changer sa taille */
 .video-frame video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;             /* remplie le cadre proprement */
   display: block;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
 }
@@ -103,6 +103,7 @@ main.accueil-video {
 }
 
 /* Play overlay */
+
 .video-overlay {
   position: absolute;
   inset: 0;
@@ -149,6 +150,7 @@ main.accueil-video {
   transform: scale(1);
 }
 
+/* Glow léger */
 @keyframes pulseGlow {
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
@@ -166,7 +168,8 @@ main.accueil-video {
   border-radius: 20px;
   box-shadow: 0 8px 22px rgba(0,0,0,0.12);
   animation: fadeSlide 1s ease forwards;
-  margin-top: 3rem;
+
+  margin-top: 2rem;   /* ajuste si tu le veux plus bas/haut */
 }
 
 .video-info h2 {
@@ -180,132 +183,10 @@ main.accueil-video {
   line-height: 1.6;
 }
 
+/* Animation */
 @keyframes fadeSlide {
   from { opacity: 0; transform: translateY(15px); }
   to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ------------------------------------------------ */
-/* ----------------- SECTION AUDIO ---------------- */
-/* ------------------------------------------------ */
-
-.audio-section {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-/* Titre audio */
-.audio-header {
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto 0.5rem auto;
-}
-
-.audio-header h2 {
-  font-size: 1.8rem;
-  margin-bottom: 0.4rem;
-  color: #2e7d32;
-}
-
-.audio-header p {
-  font-size: 1.05rem;
-  color: #3a3a3a;
-}
-
-/* Grille 3 colonnes */
-.audio-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.8rem;
-}
-
-/* Carte audio */
-.sound-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.2rem;
-  padding: 1.5rem 1.6rem;
-  background: rgba(255, 255, 255, 0.96);
-  border-radius: 20px;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
-  position: relative;
-  overflow: hidden;
-  transform: translateY(0);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.sound-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
-}
-
-/* ------------------------------------------------ */
-/* ----------- NUMÉRO (CORRIGÉ NON ÉCRASÉ) -------- */
-/* ------------------------------------------------ */
-
-.sound-icon {
-  width: 60px;           /* corrigé */
-  height: 60px;          /* corrigé */
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #a5d6a7, #2e7d32);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 1.15rem;
-  box-shadow: 0 0 18px rgba(46, 125, 50, 0.45);
-  position: relative;
-}
-
-.sound-icon::before {
-  content: "";
-  position: absolute;
-  inset: -6px;
-  border-radius: inherit;
-  border: 2px solid rgba(46, 125, 50, 0.6);
-  opacity: 0.7;
-  animation: soundPulse 2s infinite ease-out;
-}
-
-@keyframes soundPulse {
-  0% { transform: scale(1); opacity: 0.7; }
-  70% { transform: scale(1.25); opacity: 0; }
-  100% { transform: scale(1.25); opacity: 0; }
-}
-
-/* numéro centré */
-.sound-number {
-  position: relative;
-  top: 1px;             /* recentré */
-  z-index: 1;
-}
-
-/* ------------------------------------------------ */
-/* -------------- TEXTE + AUDIO ------------------- */
-/* ------------------------------------------------ */
-
-.sound-content h3 {
-  margin: 0 0 0.3rem 0;
-  font-size: 1.15rem;
-  color: #2e7d32;
-}
-
-.sound-content p {
-  margin: 0 0 0.7rem 0;
-  font-size: 0.98rem;
-  line-height: 1.6;
-  color: #333333;
-}
-
-.sound-content audio {
-  width: 100%;
-  outline: none;
 }
 
 /* ------------------------------------------------ */
@@ -313,6 +194,7 @@ main.accueil-video {
 /* ------------------------------------------------ */
 
 @media (max-width: 900px) {
+
   .video-layout {
     flex-direction: column;
     width: 100%;
@@ -330,12 +212,14 @@ main.accueil-video {
   }
 }
 
-@media (max-width: 1100px) {
-  .audio-grid {
-    grid-template-columns: 1fr;
-  }
 
-  .sound-card {
-    padding: 1.4rem 1.5rem;
-  }
+
+/* --- Footer --- */
+footer {
+  background-color: #e8f5e9;
+  text-align: center;
+  padding: 1rem;
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: auto;
 }
