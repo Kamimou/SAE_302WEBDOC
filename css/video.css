@@ -1,241 +1,30 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to right, #eafbea, #ffffff);
-  color: #2e2e2e;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  position: relative;
-  overflow-x: hidden; /* Empêche le débordement horizontal */
-}
+/* ------------------------------------------------ */
+/* ---------------- PAGE VIDEO -------------------- */
+/* ------------------------------------------------ */
 
-
-/* --- Vidéo de fond --- */
-
-#background-video {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  object-fit: cover;
-  z-index: -1;
-  opacity: 0,1;
-  filter: brightness(0.55);
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 85%);
-}
-
-
-/* --- Structure principale --- */
-main {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 0%;
-  left: 4%;
-  position: relative;
-  z-index: 1;
-}
-
-/* --- Partie gauche : assiette + ingrédients --- */
-
-
-.left {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.plate-zone {
-  position: relative;
-  width: 580px; /* +10% */
-  height: 580px;
-}
-
-.plate {
-  width: 385px; /* +10% */
-  height: auto;
-  border-radius: 50%;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.85);
-}
-
-.plate-clickable {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.plate-clickable a {
-  text-decoration: none;
-  color: white;
-}
-
-.plate-text {
-  margin-top: 450px;
-  text-decoration: none;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: white;     /* couleur visible */
-  position: relative;
-  z-index: 30;      /* AU-DESSUS de l'assiette */
-}
-
-/* --- Ingrédients autour de l’assiette --- */
-.ingredient-item {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: transform 0.3s ease, filter 0.3s ease;
-  animation: float 4s ease-in-out infinite;
-}
-
-.ingredient-item img {
-  width: 120px;
-  height: 120px;
-  border-radius: 100%;
-  object-fit: cover;
-  margin-top: 15px; /* recentre parfaitement dans le cercle */
-  position: relative;
-  z-index: 2;
-
-}
-
-/* Cercle derrière chaque ingrédient */
-.ingredient-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.85);
-  z-index: -1; /* derrière l’image */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.ingredient-item a {
-  text-decoration: none; /* Supprime le soulignement bleu */
-  color: inherit; /* Garde la même couleur que le texte normal */
-}
-
-.ingredient-item p {
-  margin-top: 20px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #ffffff;
-  z-index: 3;
-  position: relative;
-}
-
-/* --- Position ajustée --- */
-.ingredient-item.top {
-  top: -18%;
-  left: 41%;
-  transform: translateX(-50%);
-}
-
-.ingredient-item.left-ing {
-  top: 50%;
-  left: -30%;
-  transform: translateY(-50%);
-}
-
-.ingredient-item.right-ing {
-  top: 50%;
-  right: -30%;
-  transform: translateY(-50%);
-}
-
-/* --- Animation commune à tous les ingrédients --- */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-/* --- Effets visuels --- */
-.ingredient-item:hover {
-  transform: scale(1.1);
-  filter: brightness(1.0);
-}
-
-.ingredient-item:hover img {
-  box-shadow: 0 0 25px rgba(76, 175, 80, 0.6);
-}
-
-/* --- Partie droite : titre avec fond --- */
-.right {
-  flex: 1;
-  text-align: center;
-}
-
-.text-background {
-  display: inline-block;
-  padding: 1.8rem 3.6rem; /* +20% d’espace autour */
-  background-color: rgba(232, 245, 233, 0.9);
-  border-radius: 18px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
-}
-
-.right h1 {
-  font-size: 3.36rem; /* +20% */
-  color: #2e7d32;
-  margin-bottom: 0.7rem;
-}
-
-.right h2 {
-  font-size: 1.56rem; /* +20% */
-  color: #4caf50;
-}
-
-
-
-
-
-
-
-
-
-
-
-/* Scroll sur la page vidéo */
+/* Permet le scroll sur cette page */
 body.page-video {
   overflow-y: auto;
 }
 
-/* Décalage de l'accueil */
-.accueil-video {
+/* Accueil (assiette) en haut, même logique que pour .accueil-galerie */
+main.accueil-video {
   margin-top: 10rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
-/* SECTION VIDÉO */
+/* SECTION VIDÉO DESSOUS L’ACCUEIL */
 .video-section {
-  padding: 3rem 6%;
+  padding: 3.5rem 4% 4.5rem;  /* même logique que .gallery-section */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2.5rem;
+  position: relative;
+  z-index: 1;
 }
 
-/* Titre */
+/* Titre bloc vert */
 .video-header {
   text-align: center;
   padding: 2rem 3rem;
@@ -256,7 +45,7 @@ body.page-video {
   color: #3a3a3a;
 }
 
-/* Layout principal */
+/* Layout principal : vidéo + texte à droite */
 .video-layout {
   display: flex;
   justify-content: center;
@@ -266,7 +55,7 @@ body.page-video {
   max-width: 1400px;
 }
 
-/* --- CARTE VIDÉO --- */
+/* Carte vidéo à gauche */
 .video-card {
   width: 55%;
   background: rgba(255,255,255,0.8);
@@ -277,7 +66,7 @@ body.page-video {
   overflow: hidden;
 }
 
-/* --- CADRE DE LA VIDÉO --- */
+/* Cadre vidéo */
 .video-frame {
   position: relative;
   width: 100%;
@@ -287,7 +76,7 @@ body.page-video {
   padding-bottom: 0.4rem;
 }
 
-/* Vidéo bien cadrée */
+/* Vidéo elle-même */
 .video-frame video {
   width: 100%;
   display: block;
@@ -296,14 +85,14 @@ body.page-video {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
 }
 
-/* Légende */
+/* Légende sous la vidéo */
 .video-caption {
   text-align: center;
   font-size: 1.05rem;
   margin-top: 0.8rem;
 }
 
-/* --- OVERLAY PLAY --- */
+/* Overlay Play */
 .video-overlay {
   position: absolute;
   inset: 0;
@@ -319,7 +108,7 @@ body.page-video {
   pointer-events: none;
 }
 
-/* -- BOUTON PLAY AVEC AURA VERTE PULSANTE -- */
+/* Bouton Play rond avec glow vert */
 .play-icon {
   width: 95px;
   height: 95px;
@@ -359,7 +148,7 @@ body.page-video {
     0 0 30px rgba(46, 125, 50, 0.45);
 }
 
-/* Animation aura */
+/* Aura animée */
 @keyframes pulseGlow {
   0% {
     box-shadow:
@@ -381,7 +170,7 @@ body.page-video {
   }
 }
 
-/* --- PARTIE TEXTE À DROITE --- */
+/* Bloc texte à droite */
 .video-info {
   width: 40%;
   background: white;
@@ -402,14 +191,14 @@ body.page-video {
   line-height: 1.6;
 }
 
-/* Animation clean */
+/* Animation d’apparition */
 @keyframes fadeSlide {
   from { opacity: 0; transform: translateY(15px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
-@media(max-width: 900px) {
+/* Responsive : vidéo au-dessus, texte en dessous */
+@media (max-width: 900px) {
 
   .video-layout {
     flex-direction: column;
