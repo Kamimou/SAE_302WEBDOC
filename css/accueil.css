@@ -62,6 +62,29 @@ main {
   background: rgba(255, 255, 255, 0.85);
 }
 
+.plate-clickable {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.plate-clickable a {
+  text-decoration: none;
+  color: white;
+}
+
+.plate-text {
+  margin-top: 450px;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;     /* couleur visible */
+  position: relative;
+  z-index: 30;      /* AU-DESSUS de l'assiette */
+}
+
 /* --- Ingrédients autour de l’assiette --- */
 .ingredient-item {
   position: absolute;
