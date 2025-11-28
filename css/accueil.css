@@ -21,6 +21,7 @@ body {
   object-fit: cover;
   z-index: -1;
   opacity: 0,1;
+  filter: brightness(0.55);
 }
 
 /* --- Structure principale --- */
@@ -58,23 +59,47 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.85);
 }
 
 /* --- Ingrédients autour de l’assiette --- */
 .ingredient-item {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   transition: transform 0.3s ease, filter 0.3s ease;
   animation: float 4s ease-in-out infinite;
 }
 
 .ingredient-item img {
-  width: 120px; /* +10% */
+  width: 120px;
   height: 120px;
-  border-radius: 50%;
+  border-radius: 100%;
   object-fit: cover;
+  margin-top: 15px; /* recentre parfaitement dans le cercle */
+  position: relative;
+  z-index: 2;
+
+}
+
+/* Cercle derrière chaque ingrédient */
+.ingredient-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  z-index: -1; /* derrière l’image */
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
+
+
 
 .ingredient-item a {
   text-decoration: none; /* Supprime le soulignement bleu */
@@ -83,10 +108,12 @@ main {
 
 
 .ingredient-item p {
-  font-size: 1rem; /* Texte un peu plus grand */
-  font-weight: 600; /* Met en gras */
-  color: #2e2e2e;
-  margin-top: 0.4rem;
+  margin-top: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  z-index: 3;
+  position: relative;
 }
 
 /* --- Position ajustée --- */
@@ -121,12 +148,15 @@ main {
 /* --- Effets visuels --- */
 .ingredient-item:hover {
   transform: scale(1.1);
-  filter: brightness(1.2);
+  filter: brightness(1.0);
 }
 
 .ingredient-item:hover img {
   box-shadow: 0 0 25px rgba(76, 175, 80, 0.6);
 }
+
+
+
 
 /* --- Partie droite : titre avec fond --- */
 .right {
@@ -152,6 +182,12 @@ main {
   font-size: 1.56rem; /* +20% */
   color: #4caf50;
 }
+
+
+
+
+
+
 /* --- Footer --- */
 footer {
   background-color: #e8f5e9;
