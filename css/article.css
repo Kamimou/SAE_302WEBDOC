@@ -347,7 +347,7 @@ main {
 }
 
 .images img {
-    width: 100px;         /* ajuste la taille si tu veux */
+    width: 10px;         /* ajuste la taille si tu veux */
     object-fit: contain;  /* garde les proportions */
 }
 
