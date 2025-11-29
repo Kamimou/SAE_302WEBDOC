@@ -49,7 +49,7 @@ main.accueil-video {
 .video-layout {
   display: flex;
   justify-content: center;
-  align-items: center;     /* ⭐ bloc texte centré verticalement */
+  align-items: center;     /* bloc texte centré verticalement */
   gap: 3rem;
   width: 100%;
   max-width: 1400px;
@@ -178,7 +178,7 @@ main.accueil-video {
   border-radius: 20px;
   box-shadow: 0 8px 22px rgba(0,0,0,0.12);
   animation: fadeSlide 1s ease forwards;
-  margin-top: 0;               /* ⭐ plus de décalage vers le bas */
+  margin-top: 0;
 }
 
 .video-info h2 {
@@ -300,6 +300,58 @@ main.accueil-video {
 }
 
 /* ------------------------------------------------ */
+/* -------- PRODUCTION SONORE PRINCIPALE ---------- */
+/* ------------------------------------------------ */
+
+.audio-feature {
+  width: 100%;
+  max-width: 1400px;
+  margin: 2.5rem auto 0 auto;
+}
+
+.audio-feature-inner {
+  background: linear-gradient(135deg, #e8f5e9, #ffffff);
+  border-radius: 22px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+  padding: 2rem 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.audio-feature-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.6rem;
+  color: #2e7d32;
+}
+
+.audio-feature-text p {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: #333333;
+}
+
+/* Bloc du lecteur audio */
+.audio-feature-player {
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.audio-feature-player audio {
+  width: 100%;
+}
+
+.audio-feature-caption {
+  font-size: 0.95rem;
+  color: #2e7d32;
+  font-style: italic;
+  text-align: right;
+}
+
+/* ------------------------------------------------ */
 /* ---------------- RESPONSIVE -------------------- */
 /* ------------------------------------------------ */
 
@@ -309,7 +361,7 @@ main.accueil-video {
     flex-direction: column;
     width: 100%;
     max-width: 95%;
-    align-items: stretch;  /* sur mobile, on aligne tout en largeur */
+    align-items: stretch;
   }
 
   .video-card,
@@ -320,6 +372,15 @@ main.accueil-video {
   .video-info {
     padding: 1.8rem;
     margin-top: 1.5rem;
+  }
+
+  .audio-feature-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .audio-feature-player {
+    width: 100%;
   }
 }
 
